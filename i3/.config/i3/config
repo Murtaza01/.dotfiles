@@ -393,7 +393,8 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+#exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/schoolAthens.jpg 
 
 # set powersavings for display:
 #exec --no-startup-id xset s 480 dpms 600 600 600
@@ -587,7 +588,8 @@ bindsym $mod+t exec --no-startup-id rofi -show window \
 exec --no-startup-id xscreensaver 
 exec --no-startup-id xautolock -time 10 -locker xscreensaver-command -activate 
 bindsym Ctrl+Shift+9 exec  xscreensaver-command -activate
-exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh
+#exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh
+exec_always --no-startup-id ~/.config/polybar/panels/launch.sh 
 exec --no-startup-id qbittorrent
 assign [class="qBittorrent"] $ws9
 bindsym Ctrl+Shift+Up exec setxkbmap -query | grep -q 'ara' && setxkbmap us || setxkbmap ara

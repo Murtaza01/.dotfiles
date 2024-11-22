@@ -12,6 +12,6 @@ vim.opt.scrolloff = 8
 vim.opt.nu = true
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.encoding = "utf-8"
-
-
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
