@@ -588,8 +588,8 @@ bindsym $mod+t exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 exec --no-startup-id xscreensaver 
 exec --no-startup-id xautolock -time 10 -locker xscreensaver-command -activate 
-exec --no-startup-id firefox
-exec --no-startup-id kitty
+exec --no-startup-id sleep 7 && firefox
+exec --no-startup-id sleep 2 && kitty
 bindsym Ctrl+Shift+9 exec  xscreensaver-command -activate
 #exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh
 exec_always --no-startup-id ~/.config/polybar/panels/launch.sh 
