@@ -192,7 +192,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # keybinding in fancy rofi (automated):
-bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
+# bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
 # alternative
 # keybinding list in editor:
 # bindsym $mod+F1 exec --no-startup-id xed ~/.config/i3/keybindings
@@ -320,7 +320,7 @@ set $ws10 "10"
 #workspace $ws5 output HDMI-0
 
 # bind program to workspace and focus to them on startup:
-assign [class="Xfce4-terminal"] $ws1
+assign [class="kitty"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="thunderbird"] $ws5
@@ -394,7 +394,8 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
 #exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/schoolAthens.jpg 
+#exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/schoolAthens.jpg 
+exec --no-startup-id sleep 1 && feh --bg-scale --recursive --randomize ~/Pictures/bg/
 
 # set powersavings for display:
 #exec --no-startup-id xset s 480 dpms 600 600 600
@@ -587,6 +588,8 @@ bindsym $mod+t exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 exec --no-startup-id xscreensaver 
 exec --no-startup-id xautolock -time 10 -locker xscreensaver-command -activate 
+exec --no-startup-id firefox
+exec --no-startup-id kitty
 bindsym Ctrl+Shift+9 exec  xscreensaver-command -activate
 #exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh
 exec_always --no-startup-id ~/.config/polybar/panels/launch.sh 
