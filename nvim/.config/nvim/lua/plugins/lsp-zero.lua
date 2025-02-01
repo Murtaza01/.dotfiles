@@ -75,6 +75,7 @@ return {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
@@ -85,6 +86,7 @@ return {
           "cssmodules_ls",
           "html",
         },
+        automatic_installation = true,
         handlers = {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"

@@ -17,9 +17,9 @@ return {
     vim.g.vimtex_view_skim_activate = 1
     vim.g.vimtex_view_skim_reading_bar = 1
 
-    vim.g.vimtex_compiler_latexmk = {
-      aux_dir = "./aux",
-      out_dir = "./out",
-    }
+--    vim.g.vimtex_compiler_latexmk = {
+--      aux_dir = "./aux",
+  --    out_dir = "./out",
+  --  }
   end
 }

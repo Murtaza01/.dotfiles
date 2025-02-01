@@ -142,29 +142,29 @@ bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
 # resize window (you can also use the mouse for that):
-#mode "resize" {
+mode "resize" {
 # These bindings trigger as soon as you enter the resize mode
 # Pressing left will shrink the window's width.
 # Pressing right will grow the window's width.
 # Pressing up will shrink the window's height.
 # Pressing down will grow the window's height.
-#        bindsym h resize shrink width 10 px or 10 ppt
-#        bindsym j resize grow height 10 px or 10 ppt
-#        bindsym k resize shrink height 10 px or 10 ppt
-#        bindsym l resize grow width 10 px or 10 ppt
+       bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
-#        bindsym Left resize shrink width 10 px or 10 ppt
-#        bindsym Down resize grow height 10 px or 10 ppt
-#        bindsym Up resize shrink height 10 px or 10 ppt
-#        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
 # back to normal: Enter or Escape
-#	     bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
+bindsym Return mode "default"
+bindsym Escape mode "default"
+}
 
-#bindsym $mod+r mode "resize"
+bindsym $mod+z mode "resize"
 
 ######################################
 # keybindings for different actions: #
@@ -179,6 +179,16 @@ bindsym $mod+q kill
 # exit-menu
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 
+# screenshot 
+bindsym $mod+p exec --no-startup-id scrot ~/Pictures/screenshots/%Y-%m-%d-%T.png && notify-send "Screenshot saved to ~/Pictures/screenshots/$(date +"%Y-%m-%d-%T").png"
+
+# activite screensaver
+bindsym Ctrl+Shift+8 exec  xscreensaver-command -activate
+
+# change language 
+bindsym Ctrl+Shift+Up exec setxkbmap -query | grep -q 'ara' && setxkbmap us || setxkbmap ara
+
+
 # Lock the system
 # lock with a picture:
 #bindsym $mod+l exec --no-startup-id i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
@@ -186,13 +196,13 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 # bindsym $mod+Shift+o  exec --no-startup-id ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+n reload
 
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
 bindsym $mod+Shift+r restart
 
 # keybinding in fancy rofi (automated):
-# bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
+#bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
 # alternative
 # keybinding list in editor:
 # bindsym $mod+F1 exec --no-startup-id xed ~/.config/i3/keybindings
@@ -201,9 +211,10 @@ bindsym $mod+Shift+r restart
 #bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 #bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # Backlight setting using dunst osc
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
+# bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
+# bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
 
+# bindsym XF86MonBrightnessDown exec --no-startup-id
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -249,7 +260,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # open new empty workspace
 bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
@@ -283,12 +294,11 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Redirect sound to headphones
-bindsym $mod+p exec --no-startup-id /usr/local/bin/switch-audio-port
+# bindsym $mod+p exec --no-startup-id /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 #bindsym $mod+n exec --no-startup-id /usr/bin/thunar
-bindsym Ctrl+Shift+P exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
 # bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
@@ -323,7 +333,8 @@ set $ws10 "10"
 assign [class="kitty"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
-assign [class="thunderbird"] $ws5
+#assign [class="thunderbird"] $ws5
+assign [class="qBittorrent"] $ws9
 
 # automatic set focus new window if it opens on another workspace than the current:
 #for_window [class=Xfce4-terminal] focus
@@ -395,7 +406,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 # exec --no-startup-id sleep 2 && nitrogen --restore
 #exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 #exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/schoolAthens.jpg 
-exec --no-startup-id sleep 1 && feh --bg-scale --recursive --randomize ~/Pictures/bg/
+exec_always --no-startup-id sleep 1 && feh --bg-scale --recursive --randomize ~/Pictures/bg/
 
 # set powersavings for display:
 #exec --no-startup-id xset s 480 dpms 600 600 600
@@ -427,10 +438,23 @@ exec --no-startup-id /usr/bin/dunst
 # `yay -S autotiling ;) (it is in AUR)
 #exec_always --no-startup-id autotiling
 
+# Autostart Service 
+exec --no-startup-id xscreensaver 
+exec --no-startup-id xautolock -time 10 -locker xscreensaver-command -activate 
+exec --no-startup-id greenclip daemon
+exec --no-statup-id ollama serve
+
+# polybar
+exec_always --no-startup-id ~/.config/polybar/panels/launch.sh 
+#exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh
+
 # Autostart apps as you like
 #exec --no-startup-id sleep 2 && xfce4-terminal
 #exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
 #exec --no-startup-id sleep 3 && thunar
+exec --no-startup-id sleep 5 && firefox
+exec --no-startup-id sleep 2 && kitty --hold sh -c "tmux"
+exec --no-startup-id sleep 4 && qbittorrent
 
 ###############
 # system tray #
@@ -565,6 +589,19 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 # Application menu handled by rofi: #
 #####################################
 
+# google search
+bindsym --release $mod+t exec --no-startup-id rofi -lines 10 -padding 0 -show search -modi search:~/.config/i3/scripts/rofi-web-search.py -i -p "Search: "
+
+# clipboard 
+bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# emoji
+bindsym $mod+i exec rofi -modi emoji -show emoji
+
+# change screen temp
+bindsym F5 exec redshift -P -O 4000 -b 0.8 
+
+bindsym F6 exec redshift -x
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
 bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun \
@@ -575,8 +612,8 @@ bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun \
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
-bindsym $mod+t exec --no-startup-id rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+# bindsym $mod+t exec --no-startup-id rofi -show window \
+#		-config ~/.config/rofi/rofidmenu.rasi
 
 #bindsym F10 exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
@@ -586,13 +623,11 @@ bindsym $mod+t exec --no-startup-id rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
-exec --no-startup-id xscreensaver 
-exec --no-startup-id xautolock -time 10 -locker xscreensaver-command -activate 
-exec --no-startup-id sleep 7 && firefox
-exec --no-startup-id sleep 2 && kitty
-bindsym Ctrl+Shift+9 exec  xscreensaver-command -activate
-#exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh
-exec_always --no-startup-id ~/.config/polybar/panels/launch.sh 
-exec --no-startup-id qbittorrent
-assign [class="qBittorrent"] $ws9
-bindsym Ctrl+Shift+Up exec setxkbmap -query | grep -q 'ara' && setxkbmap us || setxkbmap ara
+
+# open terminal in floating mode with launcher
+#bindsym $mod+a exec kitty --hold sh -c "" --class floating
+bindsym $mod+a exec kitty --class floating
+for_window [class="floating"] floating enabled move position center
+floating_minimum_size 600 x 300
+floating_maximum_size 700 x 400
+
